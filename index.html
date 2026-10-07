@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PC貸出 | Workspace</title><link rel="stylesheet" href="/static/style.css"><script src="/static/app.js" defer></script></head>
+<body>
+<aside class="sidebar">
+  <a class="brand" href="/" aria-label="Workspace ホーム"><span class="brand-icon">W</span><span>Workspace<small>IT ASSET MANAGEMENT</small></span></a>
+  <div class="nav-label">ワークスペース</div>
+  <nav aria-label="メインメニュー"><button class="nav-item active" id="nav-lend"><span aria-hidden="true">▣</span> PCを借りる <span class="nav-arrow">›</span></button><button class="nav-item" id="nav-return"><span aria-hidden="true">↩</span> PCを返す</button></nav>
+  <div class="sidebar-note"><span class="note-icon">i</span><strong>必要なときに、必要な1台を。</strong><p>共用PCの貸出と返却を<br>ここから管理できます。</p></div>
+  <div class="sidebar-bottom"><span class="dot"></span> 社内共用PC 貸出サービス<small>Gate5 · 研修用環境</small></div>
+</aside>
+<div class="workspace">
+  <header class="topbar"><span class="breadcrumb">社内サービス <span>/</span> PC貸出・返却</span><div class="profile"><span class="avatar" id="avatar">社</span><span><strong id="user-name">読み込み中</strong><small id="user-department">—</small></span></div></header>
+  <main id="main">
+    <div class="page-heading"><div><div class="eyebrow">DEVICE LENDING</div><h1 id="page-title">PCを借りる</h1><p id="page-description">利用したいPCを選んで、貸出を申請してください。</p></div><span class="date-pill" id="today">—</span></div>
+    <div class="stats" aria-label="利用状況"><div class="stat"><span class="stat-icon">▣</span><div><span class="stat-label">貸出可能なPC</span><strong><span id="available-count">—</span><small>台</small></strong></div><span class="stat-badge">利用可能</span></div><div class="stat"><span class="stat-icon blue">↗</span><div><span class="stat-label">あなたの貸出中</span><strong><span id="mine-count">—</span><small>/ 1台</small></strong></div></div><div class="stat"><span class="stat-icon sand">◷</span><div><span class="stat-label">返却期限を過ぎたPC</span><strong><span id="overdue-count">—</span><small>台</small></strong></div></div></div>
+    <div id="notice" class="notice" role="alert" tabindex="-1" hidden></div>
+    <div id="recovery" class="recovery" hidden><button class="button secondary" id="check-result">結果を確認する</button><button class="button secondary" id="relogin" hidden>再ログイン</button></div>
+    <section id="lend-view">
+      <div class="columns"><div class="card form-card">
+        <ol class="steps" aria-label="貸出の手順"><li class="current" id="step-input"><span>1</span>申請内容の入力</li><li id="step-confirm"><span>2</span>内容の確認</li><li id="step-complete"><span>3</span>貸出完了</li></ol>
+        <div id="input-panel"><div class="card-heading"><h2>貸出申請</h2><p>必要な項目を入力してください。</p></div>
+          <form id="lend-form" novalidate>
+            <label for="device_id">機種 <span class="required">必須</span></label><select id="device_id" name="device_id" aria-describedby="device-help device-error"><option value="">PCを選択してください</option></select><p class="field-error" id="device-error" hidden></p><p class="help" id="device-help">機種名と資産番号を確認して選択してください。</p>
+            <label for="due_date">返却予定日 <span class="required">必須</span></label><input type="date" id="due_date" name="due_date" aria-describedby="date-help date-error"><p class="field-error" id="date-error" hidden></p><p class="help" id="date-help">明日から90日以内の日付を指定できます。土日・祝日も選択できます。</p>
+            <label for="purpose">利用目的 <span class="required">必須</span></label><textarea id="purpose" name="purpose" rows="3" placeholder="例：出張先での資料作成・オンライン会議" aria-describedby="purpose-help purpose-error"></textarea><p class="field-error" id="purpose-error" hidden></p><div class="field-bottom"><span id="purpose-help">100文字以内で入力してください。</span><span id="purpose-count">0 / 100</span></div>
+            <div class="form-footer"><span>次の画面で内容を確認できます。</span><button class="button primary" id="prepare-button" type="submit">貸出する <span aria-hidden="true">→</span></button></div>
+          </form>
+        </div>
+        <div id="confirm-panel" hidden><div class="card-heading"><h2>申請内容の確認</h2><p>以下の内容でPCを借ります。内容を確認して確定してください。</p></div><dl class="details" id="confirm-details"></dl><p class="confirm-note">この時点では貸出は完了していません。確認内容の有効期限は30分です。</p><div class="form-footer"><button class="button secondary" id="edit-button">戻って修正</button><button class="button primary" id="commit-button">確定する <span aria-hidden="true">→</span></button></div></div>
+      </div><aside class="card guide"><span class="guide-symbol">i</span><h2>ご利用の前に</h2><div class="guide-item"><span>01</span><div><strong>貸出は1人1台まで</strong><p>現在借りているPCがある場合は、返却後に申請してください。</p></div></div><div class="guide-item"><span>02</span><div><strong>返却予定日を確認</strong><p>利用が終わったら、PCを返却して返却処理を行ってください。</p></div></div><div class="guide-item"><span>03</span><div><strong>大切なデータを忘れずに</strong><p>返却前に、必要なデータを保存してください。</p></div></div><div class="guide-contact">お困りの場合は、管理部に<br>お問い合わせください。</div></aside></div>
+    </section>
+    <section id="return-view" class="card return-card" hidden><div class="card-heading"><h2>あなたが借りているPC</h2><p>手元の資産番号を確認して、返却してください。</p></div><div id="loans"></div></section>
+    <section id="complete-view" class="card complete-card" hidden><div class="success-icon" aria-hidden="true">✓</div><span class="eyebrow">COMPLETED</span><h2 id="complete-title">貸出が完了しました</h2><p id="complete-message" role="status"></p><dl class="details" id="complete-details"></dl><button class="button primary" id="complete-next">貸出状況を確認する</button></section>
+    <section class="recent card"><div class="recent-heading"><h2>最近の操作</h2><span>あなたの完了した操作</span></div><div id="history"><p class="empty">完了した操作はまだありません。</p></div></section>
+    <footer class="page-footer">Workspace <span>PC貸出・返却</span><span class="footer-right">日付・時刻は日本時間で表示しています。</span></footer>
+  </main>
+</div>
+</body></html>
