@@ -87,6 +87,7 @@ python -m unittest -v test_app
 - `Gate5_例外系仕様書.md`: バリデーション、業務ルール、メッセージ、状態遷移
 - `Gate5_例外系_洗い出し表_簡易版25件.csv`: 8観点・25件の簡易表
 - `output/pdf/Gate5_補完後フロー図_例外25件.pdf`: 正常系に例外分岐を追加したフロー図
+- `output/pdf/Gate5_モック画像_エラー時3画面.pdf`: エラー時の画面3枚をまとめた提出用PDF
 - `app.py`, `schema.sql`, `index.html`, `static/`: システム本体
 - `test_app.py`, `browser-tests.cjs`: 自動テスト
 - `mocks/`: 正常時・エラー時の画面キャプチャ
